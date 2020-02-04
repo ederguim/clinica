@@ -39,6 +39,10 @@ hs_err_pid*
 .gradle
 bin/
 .mvn/
+.mvnw
+*.mvnw/
+mvnw/
+mvnw
 tmp/
 *.tmp
 *.bak
