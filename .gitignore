@@ -42,7 +42,7 @@ bin/
 .mvnw
 *.mvnw/
 mvnw/
-mvnw
+*.cmd
 tmp/
 *.tmp
 *.bak
