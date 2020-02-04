@@ -1,7 +1,12 @@
-angular.module('App', ['ui.router'])
-    .run(function (AuthService, $rootScope, $state) {
+angular.module('App', ['ui.router', 'LocalStorageModule'])
+    .run(function (AuthService, $rootScope, $state, LocalStorage, $http) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-            if (!AuthService.user) {
+        	
+        	if (LocalStorage.get('token') != undefined) {
+        		 $http.defaults.headers.common['Authorization'] = 'Bearer ' + LocalStorage.get('token').token;
+        	}
+        	
+        	if (!AuthService.user) {
                 if (toState.name != 'login' && toState.name != 'register') {
                     event.preventDefault();
                     $state.go('login');

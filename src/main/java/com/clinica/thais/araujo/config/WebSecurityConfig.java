@@ -29,20 +29,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder());
+		auth. //
+		jdbcAuthentication() //
+		.dataSource(dataSource) //
+		.passwordEncoder(passwordEncoder());
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-
-		web.ignoring().antMatchers("/", "/index.html", "/app/**", "/register", "/authenticate", "/favicon.ico");
+		web. //
+		ignoring(). //
+		antMatchers("/", "/index.html", "/app/**", "/register", "/authenticate", "/favicon.ico");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().fullyAuthenticated().and()
-				.addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class).httpBasic().and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+		http //
+		.authorizeRequests() //
+		.anyRequest() //
+		.fullyAuthenticated() //
+		.and()  //
+				.addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class) //
+				.httpBasic() //
+				.and()
+				.sessionManagement() //
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS) //
+				.and() //
+				.csrf() //
+				.disable();
 	}
 
 }

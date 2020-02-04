@@ -33,6 +33,7 @@ angular.module('App').config(function ($stateProvider, $urlRouterProvider) {
     }).state('users', {
         parent: 'nav',
         url: '/users',
+        authorize: true,
         data: {
             role: 'ADMIN'
         },
@@ -45,6 +46,7 @@ angular.module('App').config(function ($stateProvider, $urlRouterProvider) {
     }).state('home', {
         parent: 'nav',
         url: '/',
+        authorize: true,
         views: {
             'content@': {
                 templateUrl: 'app/views/home.html',
@@ -73,6 +75,7 @@ angular.module('App').config(function ($stateProvider, $urlRouterProvider) {
     .state('cliente', {
         parent: 'nav',
         url: '/cliente',
+        authorize: true,
         views: {
             'content@': {
                 templateUrl: 'app/views/cliente.html',

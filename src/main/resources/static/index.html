@@ -1,93 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thais Araujo Estetica Avancada</title>
-
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-
-<style>
-    .margin-top-5 {
-        margin-top: 10px;
-    }
-
-    .panel-scroll {
-        height: 300px;
-        overflow-y: auto;
-    }
-    
-    .navbar-default .navbar-brand {
-    	color: #fff !important;
-	}
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Thaí Araújo</title>
 	
-	.navbar-default {
-	    background-color: #db7580 !important;
-	    border-color: #db7580 !important;
-	}
+	    <link rel="stylesheet" type="text/css" href="app/repo/bootstrap/dist/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="app/repo/bootstrap/dist/css/bootstrap-theme.min.css">
+	    <link rel="stylesheet" type="text/css" href="app/repo/font-awesome/css/font-awesome.css">
+	    <link rel="stylesheet" type="text/css" href="app/css/style.css">
+	</head>
 	
-	.navbar-default .navbar-nav>li>a {
-	    color: #fff !important;
-	}
-    
-    .panel-primary>.panel-heading {
-	    color: #fff !important;
-	    background-color: #db7580 !important;
-	    border-color: #db7580 !important;
-	}
+	<body ng-app="App">
 	
-	.panel-primary {
-    	border-color: #db7580 !important;
-	}
- 	.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover { */
- 	    color: #fff !important; */
- 	    background-color: #db7580 !important; */
- 	    border-color: #db7580 !important; */
- 	} 
-	.btn-primary {
-	    color: #fff !important;
-	    background-color: #db7580 !important;
-	    border-color: #db7580 !important;
-	}
-	
-</style>
-<body ng-app="App">
-
-<div ui-view="nav"></div>
-
-<div class="container" style="margin-top: 50px;">
-    <div ui-view="content"></div>
-</div>
-
-<div ui-view="footer"></div>
-
-<script
-        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="app/app.js"></script>
-<script type="text/javascript" src="app/route.js"></script>
-
-<script type="text/javascript" src="app/services/auth-service.js"></script>
-
-<!-- Including controllers -->
-<script type="text/javascript" src="app/controllers/nav.js"></script>
-<script type="text/javascript" src="app/controllers/footer.js"></script>
-<script type="text/javascript" src="app/controllers/login.js"></script>
-<script type="text/javascript" src="app/controllers/users.js"></script>
-<script type="text/javascript" src="app/controllers/home.js"></script>
-<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
-<script type="text/javascript" src="app/controllers/access-denied.js"></script>
-<script type="text/javascript" src="app/controllers/register.js"></script>
-<script type="text/javascript" src="app/controllers/cliente.js"></script>
-</body>
+		<div ui-view="nav"></div>
+		
+		<div class="container" style="margin-top: 50px;">
+		    <div ui-view="content"></div>
+		</div>
+		
+		<div ui-view="footer"></div>
+		
+		<script src="app/repo/jquery/dist/jquery.min.js"></script>
+		<script src="app/repo/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="app/repo/angular/angular.js"></script>
+		<script src="app/repo/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="app/repo/angular-local-storage/dist/angular-local-storage.min.js"></script>
+		
+		<!-- config -->
+		<script type="text/javascript" src="app/app.js"></script>
+		<script type="text/javascript" src="app/route.js"></script>
+		
+		<!-- service -->
+		<script type="text/javascript" src="app/services/local-storage-service.js"></script>
+		<script type="text/javascript" src="app/services/auth-service.js"></script>
+		
+		<!-- controllers -->
+		<script type="text/javascript" src="app/controllers/nav.js"></script>
+		<script type="text/javascript" src="app/controllers/footer.js"></script>
+		<script type="text/javascript" src="app/controllers/login.js"></script>
+		<script type="text/javascript" src="app/controllers/users.js"></script>
+		<script type="text/javascript" src="app/controllers/home.js"></script>
+		<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
+		<script type="text/javascript" src="app/controllers/access-denied.js"></script>
+		<script type="text/javascript" src="app/controllers/register.js"></script>
+		<script type="text/javascript" src="app/controllers/cliente.js"></script>
+	</body>
 </html>

@@ -1,21 +1,14 @@
-//angular.module('App').service('AuthService', function() {
-//	return {
-//		user : null
-//	}
-//});
-
 (function() {
 	'use strict';
 
 	angular.module('App').service('AuthService', AuthService);
 
-	AuthService.$inject = [];
+	AuthService.$inject = ['LocalStorage'];
 
-	function AuthService() {
+	function AuthService(LocalStorage) {
 		return {
-			user : null
+			user : (LocalStorage.get('token') != undefined) ? LocalStorage.get('token').user : null
 		}
-
 	}
 
 })();

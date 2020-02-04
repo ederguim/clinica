@@ -1,0 +1,17 @@
+.margin-top-5 {
+	margin-top: 10px;
+}
+
+.panel-scroll {
+	height: 300px;
+	overflow-y: auto;
+}
+
+.user {
+	font-weight: bold;
+}
+
+.logout {
+	cursor: pointer;
+	margin-left: 5px;
+}

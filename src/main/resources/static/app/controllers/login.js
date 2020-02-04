@@ -3,10 +3,9 @@
 
 	angular.module('App').controller('LoginController', LoginController);
 
-	LoginController.$inject = [ '$http', '$scope', '$state', 'AuthService',
-			'$rootScope' ];
+	LoginController.$inject = [ '$http', '$scope', '$state', 'AuthService', '$rootScope', 'LocalStorage' ];
 
-	function LoginController($http, $scope, $state, AuthService, $rootScope) {
+	function LoginController($http, $scope, $state, AuthService, $rootScope, LocalStorage) {
 		var vm = this;
 		vm.login = function() {
 			$http({
@@ -22,17 +21,16 @@
 								$scope.password = null;
 								if (res.token) {
 									vm.message = '';
-									$http.defaults.headers.common['Authorization'] = 'Bearer '
-											+ res.token;
-
+									$http.defaults.headers.common['Authorization'] = 'Bearer ' + res.token;
 									AuthService.user = res.user;
+									LocalStorage.set('token', res);
 									$rootScope.$broadcast('LoginSuccessful');
 									$state.go('home');
 								} else {
-									vm.message = 'Authetication Failed !';
+									vm.message = 'Falha na autenticação!';
 								}
 							}).error(function(error) {
-						vm.message = 'Authetication Failed !';
+						vm.message = 'Falha na autenticação!';
 					});
 
 		}

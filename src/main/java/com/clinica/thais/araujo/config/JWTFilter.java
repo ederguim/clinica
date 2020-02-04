@@ -45,13 +45,6 @@ public class JWTFilter extends GenericFilterBean {
 		}
 	}
 
-	/**
-	 * Method for creating Authentication for Spring Security Context Holder
-	 * from JWT claims
-	 * 
-	 * @param claims
-	 * @return
-	 */
 	@SuppressWarnings("unchecked")
 	public Authentication getAuthentication(Claims claims) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();

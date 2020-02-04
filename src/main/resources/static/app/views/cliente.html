@@ -1,85 +1,115 @@
-<style>
-    .margin-top-5 {
-        margin-top: 10px;
-    }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class=" col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Register</div>
+			<div class="panel-body">
+				<form ng-submit="vm.submit()" name="cadastrar" novalidate>
 
-    .panel-scroll {
-        height: 300px;
-        overflow-y: auto;
-    }
-    
-	.panel-default>.panel-heading {
-	    color: #fff !important;
-	    background-color: #db7580 !important;
-	    border-color: #ddd !important;
-	}
-	
-	.btn-default {
-	    color: #fff;
-	    background-color: #db7580;
-	    border-color: #db7580;
-	}
-</style>
-<div class=" col-md-6 col-md-offset-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">Register</div>
-        <div class="panel-body">
-            <div class="col-md-12">
-                <form ng-submit="vm.submit()" name="cadastrar" novalidate>
+					<div class="col-md-6">
 
-                    <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.nome.$invalid && cadastrar.nome.$dirty }">
-                        <label for="nome">Nome:</label> <input type="text" required
-                                                               class="form-control" ng-model="vm.cliente.nome" id="name"
-                                                               name="nome">
-                    </div>
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.nome.$invalid && cadastrar.nome.$dirty }">
+							<label for="nome">Nome:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.nome" id="name"
+								name="nome">
+						</div>
 
-                    <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.cpf.$invalid && cadastrar.cpf.$dirty }">
-                        <label for="cpf">CPF:</label> <input type="text"
-                                                                       required class="form-control"
-                                                                       ng-model="vm.cliente.cpf"
-                                                                       id="cpf" name="cpf">
-                    </div>
-                    
-                    <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.estado_civil.$invalid && cadastrar.estado_civil.$dirty }">
-                        <label for="etado_civil">Estado Civil:</label> <input type="text"
-                                                                       required class="form-control"
-                                                                       ng-model="vm.cliente.estado_civil"
-                                                                       id="estado_civil" name="estado_civil">
-                    </div>
-                    
-                    <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.profissao.$invalid && cadastrar.profissao.$dirty }">
-                        <label for="profissao">Profissao:</label> <input type="text"
-                                                                       required class="form-control"
-                                                                       ng-model="vm.cliente.profissao"
-                                                                       id="profissao" name="profissao">
-                    </div>
-                    
-                    <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.email.$invalid && cadastrar.email.$dirty }">
-                        <label for="email">E-mail:</label> <input type="text"
-                                                                       required class="form-control"
-                                                                       ng-model="vm.cliente.email"
-                                                                       id="email" name="email">
-                    </div>
-                    
-                      <div class="form-group"
-                         ng-class="{ 'has-error': cadastrar.telefone.$invalid && cadastrar.telefone.$dirty }">
-                        <label for="telefone">Telefone:</label> <input type="text"
-                                                                       required class="form-control"
-                                                                       ng-model="vm.cliente.telefone"
-                                                                       id="telefone" name="telefone">
-                    </div>
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.cpf.$invalid && cadastrar.cpf.$dirty }">
+							<label for="cpf">CPF:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.cpf" id="cpf"
+								name="cpf">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.estado_civil.$invalid && cadastrar.estado_civil.$dirty }">
+							<label for="etado_civil">Estado Civil:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.estado_civil"
+								id="estado_civil" name="estado_civil">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.profissao.$invalid && cadastrar.profissao.$dirty }">
+							<label for="profissao">Profissao:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.profissao"
+								id="profissao" name="profissao">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.email.$invalid && cadastrar.email.$dirty }">
+							<label for="email">E-mail:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.email" id="email"
+								name="email">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.telefone.$invalid && cadastrar.telefone.$dirty }">
+							<label for="telefone">Telefone:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.telefone"
+								id="telefone" name="telefone">
+						</div>
+
+					</div>
+
+					<div class="col-md-6">
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.nome.$invalid && cadastrar.nome.$dirty }">
+							<label for="nome">Nome:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.nome" id="name"
+								name="nome">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.cpf.$invalid && cadastrar.cpf.$dirty }">
+							<label for="cpf">CPF:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.cpf" id="cpf"
+								name="cpf">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.estado_civil.$invalid && cadastrar.estado_civil.$dirty }">
+							<label for="etado_civil">Estado Civil:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.estado_civil"
+								id="estado_civil" name="estado_civil">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.profissao.$invalid && cadastrar.profissao.$dirty }">
+							<label for="profissao">Profissao:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.profissao"
+								id="profissao" name="profissao">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.email.$invalid && cadastrar.email.$dirty }">
+							<label for="email">E-mail:</label> <input type="text" required
+								class="form-control" ng-model="vm.cliente.email" id="email"
+								name="email">
+						</div>
+
+						<div class="form-group"
+							ng-class="{ 'has-error': cadastrar.telefone.$invalid && cadastrar.telefone.$dirty }">
+							<label for="telefone">Telefone:</label> <input type="text"
+								required class="form-control" ng-model="vm.cliente.telefone"
+								id="telefone" name="telefone">
+						</div>
+
+					</div>
 
 
-<!--                     <button type="submit" class="btn btn-default" ng-disabled="cadastrar.$invalid || (vm.confirmCPF != vm.cliente.cpf)">Cadastrar</button> -->
-                    <button type="submit" class="btn btn-default">Cadastrar</button>
-                    <div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+					<!--                     <button type="submit" class="btn btn-default" ng-disabled="cadastrar.$invalid || (vm.confirmCPF != vm.cliente.cpf)">Cadastrar</button> -->
+					<button type="submit" class="btn btn-default">Cadastrar</button>
+					<div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
