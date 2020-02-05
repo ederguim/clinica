@@ -7,6 +7,7 @@
 
 	function ClienteController($http, $scope, AuthService) {
 		var vm = this;
+		vm.upload = upload;
 		
 		vm.submit = function () {
             $http.post('cadastrar', vm.cliente).success(function (res) {
@@ -18,6 +19,10 @@
                 vm.message = error.message;
             });
         };
+        
+        function upload() {
+        	console.log('entrou aqui')
+        }
 	}
 
 })();

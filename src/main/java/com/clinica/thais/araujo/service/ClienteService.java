@@ -1,6 +1,7 @@
 package com.clinica.thais.araujo.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class ClienteService {
 		cliente.setData_cadastro(new Date());
 		cliente.setData_nascimento(new Date());
 		return repository.save(cliente);
+	}
+
+	public List<Cliente> findAll() {
+		return repository.findAll();
 	}
 
 }

@@ -4,24 +4,25 @@
 	    <meta charset="UTF-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Thaí Araújo</title>
+	    <title>Thaís Araújo</title>
 	
 	    <link rel="stylesheet" type="text/css" href="app/repo/bootstrap/dist/css/bootstrap.min.css">
 	    <link rel="stylesheet" type="text/css" href="app/repo/bootstrap/dist/css/bootstrap-theme.min.css">
-	    <link rel="stylesheet" type="text/css" href="app/repo/font-awesome/css/font-awesome.css">
+	    <link rel="stylesheet" type="text/css" href="app/repo/font-awesome/css/all.css">
 	    <link rel="stylesheet" type="text/css" href="app/css/style.css">
 	</head>
 	
-	<body ng-app="App">
+	<body ng-app="App" background="app/img/fundo.png">
 	
 		<div ui-view="nav"></div>
 		
-		<div class="container" style="margin-top: 50px;">
+		<div class="container">
 		    <div ui-view="content"></div>
 		</div>
 		
 		<div ui-view="footer"></div>
 		
+		<script src="app/repo/font-awesome/css/all.js"></script>
 		<script src="app/repo/jquery/dist/jquery.min.js"></script>
 		<script src="app/repo/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="app/repo/angular/angular.js"></script>

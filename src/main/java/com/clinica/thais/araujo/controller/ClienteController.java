@@ -1,5 +1,7 @@
 package com.clinica.thais.araujo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +15,21 @@ import com.clinica.thais.araujo.service.ClienteService;
 
 @RestController
 public class ClienteController {
-    
-	@Autowired
-    private ClienteService clienteService;
 
-	 @RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	    public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
-	        if (clienteService.findOneByUsername(cliente.getNome()) != null) {
-	            throw new RuntimeException("Cliente já cadastrado!");
-	        }
-	        return new ResponseEntity<Cliente>(clienteService.save(cliente), HttpStatus.CREATED);
-	    }
+	@Autowired
+	private ClienteService clienteService;
+
+	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
+	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
+		if (clienteService.findOneByUsername(cliente.getNome()) != null) {
+			throw new RuntimeException("Cliente já cadastrado!");
+		}
+		return new ResponseEntity<Cliente>(clienteService.save(cliente), HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/clientes", method = RequestMethod.GET)
+	public List<Cliente> users() {
+		return clienteService.findAll();
+	}
 
 }

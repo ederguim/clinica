@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<pre>{{vm.user|json}}</pre>
+	<div class=" col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Pacientes</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="d in vm.data">
+						<tr>
+							<td>{{d.nome}}</td>
+							<td>{{d.telefone}}</td>
+							<td>Edit</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
