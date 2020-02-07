@@ -83,6 +83,17 @@ angular.module('App').config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
+    .state('clientes', {
+        parent: 'nav',
+        url: '/clientes',
+        authorize: true,
+        views: {
+            'content@': {
+                templateUrl: 'app/views/clientes.html',
+                controller: 'ClienteController as vm'
+            }
+        }
+    })
     .state('register', {
         parent: 'nav',
         url: '/register',

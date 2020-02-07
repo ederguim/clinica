@@ -13,7 +13,7 @@
                 vm.usuario = null;
                 vm.confirmPassword = null;
                 $scope.register.$setPristine();
-                vm.message = "Registration successfull !";
+                vm.message = "Cadastrado com sucesso!";
             }).error(function (error) {
                 vm.message = error.message;
             });

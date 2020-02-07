@@ -1,4 +1,4 @@
-angular.module('App', ['ui.router', 'LocalStorageModule'])
+angular.module('App', ['ui.router', 'LocalStorageModule', 'ngFileUpload'])
     .run(function (AuthService, $rootScope, $state, LocalStorage, $http) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         	

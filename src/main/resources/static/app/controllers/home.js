@@ -9,16 +9,6 @@
 		var vm = this;
 		vm.user = AuthService.user
 		vm.data = null;
-
-		function init() {
-			$http.get("clientes").then(function(response) {
-				vm.data = response.data;
-			}, function(response) {
-				vm.message = error.message;
-			});
-		}
-
-		init();
 	}
 
 })();

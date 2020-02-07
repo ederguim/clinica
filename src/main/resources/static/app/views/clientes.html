@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="row">
+		<div class=" col-md-12">
+			<div class="col-xs-6 col-sm-3">
+				<div class="form-group">
+					<label>Novo Paciente</label> <br/>
+					<a ui-sref="cliente"><i class="fas fa-user-plus fa-3x"></i> </a>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-3"></div>
+			<div class="clearfix visible-xs-block"></div>
+
+			<div class="col-xs-6 col-sm-3"></div>
+			<div class="col-xs-6 col-sm-3"></div>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class=" col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Pacientes</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Telefone</th>
+								<th>Cidade</th>
+								<th>Avaliar</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="d in vm.data">
+							<tr>
+								<td>{{d.nome}}</td>
+								<td>{{d.telefone}}</td>
+								<td>{{d.endereco.municipio}}</td>
+								<td><a><i class="fas fa-address-card"></i></td></a>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
