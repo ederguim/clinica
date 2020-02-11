@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class=" col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Paciente</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="">Foto:</label>
+								<br/>
+								<img data-ng-src="data:image/png;base64,{{vm.cliente.image}}" height="150" width="120"/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Data Cadastro:</label> <span class="form-control" ng-bind="vm.cliente.data_cadastro | date:'dd/MM/yyyy'"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Status:</label> <span class="form-control" ng-bind="vm.cliente.status"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Nome:</label> <span class="form-control" ng-bind="vm.cliente.nome"></span>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>CPF:</label> <span class="form-control" ng-bind="vm.cliente.cpf"></span>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>Data Nascimento:</label> <span
+									class="form-control"
+									ng-bind="vm.cliente.data_nascimento | date:'dd/MM/yyyy'"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Estado Civil:</label> <span class="form-control" ng-bind="vm.cliente.estado_civil"></span>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Profissao:</label> <span class="form-control" ng-bind="vm.cliente.profissao"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label>E-mail:</label> <span class="form-control" ng-bind="vm.cliente.email"></span>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<label>Telefone:</label> <span class="form-control" ng-bind="vm.cliente.telefone"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">Endereço</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-9 col-md-push-3"></div>
+									<div class="col-md-3 col-md-pull-9">
+										<div class="form-group">
+											<label>CEP:</label> <span class="form-control" ng-bind="vm.cliente.endereco.cep"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Logradouro:</label> <span class="form-control" ng-bind="vm.cliente.endereco.logradouro"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Complemento:</label> <span class="form-control" ng-bind="vm.cliente.endereco.complemento"></span>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Número:</label> <span class="form-control" ng-bind="vm.cliente.endereco.numero"></span>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Bairro:</label> <span class="form-control" ng-bind="vm.cliente.endereco.bairro"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Municipio:</label> <span class="form-control" ng-bind="vm.cliente.endereco.municipio"></span>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Estado:</label> <span class="form-control" ng-bind="vm.cliente.endereco.estado"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="btn btn-default" ui-sref="clientes">Voltar</button>
+					<a type="button" class="btn btn-danger" ui-sref="cliente({id: '{{vm.id}}', edit: 'true'})">Editar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

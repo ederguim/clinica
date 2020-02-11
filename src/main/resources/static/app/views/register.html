@@ -14,38 +14,37 @@
 
 						<div class="form-group"
 							ng-class="{ 'has-error': register.name.$invalid && register.name.$dirty }">
-							<label for="name">Name:</label> <input type="text" required
+							<label for="name">Nome:</label> <input type="text" required
 								class="form-control" ng-model="vm.usuario.name" id="name"
 								name="name">
 						</div>
 
 						<div class="form-group"
 							ng-class="{ 'has-error': register.username.$invalid && register.username.$dirty }">
-							<label for="username">Username:</label> <input type="text"
+							<label for="username">Usuário:</label> <input type="text"
 								required class="form-control" ng-model="vm.usuario.username"
 								id="username" name="username">
 						</div>
 
 						<div class="form-group"
 							ng-class="{ 'has-error': register.password.$invalid && register.password.$dirty }">
-							<label for="pwd">Password:</label> <input type="password"
+							<label for="pwd">Senha:</label> <input type="password"
 								required class="form-control" id="pwd"
 								ng-model="vm.usuario.password" name="password">
 						</div>
 
 						<div class="form-group"
 							ng-class="{ 'has-error': register.confirmPassword.$invalid && register.confirmPassword.$dirty }">
-							<label for="cpwd">Confirm Password:</label> <input
+							<label for="cpwd">Confirme a senha:</label> <input
 								type="password" name="confirmPassword" required
 								class="form-control" id="cpwd" ng-model="vm.confirmPassword">
 						</div>
 
 						<div class="alert alert-warning margin-top-5"
-							ng-show="vm.confirmPassword != vm.usuario.password ">Password
-							Not Matching</div>
+							ng-show="vm.confirmPassword != vm.usuario.password ">As senhas não são iguais</div>
 
 						<button type="submit" class="btn btn-default"
-							ng-disabled="register.$invalid || (vm.confirmPassword != vm.usuario.password)">Register
+							ng-disabled="register.$invalid || (vm.confirmPassword != vm.usuario.password)">Registrar
 						</button>
 						<button class="btn btn-default" ui-sref="login">Login</button>
 						<div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div>

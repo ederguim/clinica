@@ -10,7 +10,7 @@
 			<div class="panel-heading">Paciente</div>
 			<div class="panel-body">
 				<div class="col-md-12">
-					<form ng-submit="vm.submit()" name="cadastrar" novalidate>
+					<form name="cadastrar" ng-submit="vm.submit()" novalidate>
 
 						<div class="row">
 							<div class="col-md-4">
@@ -21,6 +21,7 @@
 											accept="image/*" ngf-pattern="'image/*'" ng-model="vm.image"><label color="red">Clique aqui para adicionar imagem</label>
 											<br/>
 											<img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="vm.image" height="100" width="100">
+<!-- 											<input type="hidden" ng-model="vm.cliente.image"> -->
 									</div>
 								</div>
 							</div>
@@ -45,13 +46,19 @@
 										name="cpf">
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3" ng-if="!vm.editar">
 								<div class="form-group"
 									ng-class="{ 'has-error': cadastrar.data_nascimento.$invalid && cadastrar.data_nascimento.$dirty }">
 									<label for="data_nascimento">Data Nascimento:</label> <input
 										type="date" required class="form-control"
 										ng-model="vm.cliente.data_nascimento" id="data_nascimento"
 										name="data_nascimento">
+								</div>
+							</div>
+							<div class="col-md-3" ng-if="vm.editar" ng-disabled="ngDisabled">
+								<div class="form-group">
+									<label for="data_nascimento">Data Nascimento:</label> <input
+										type="text" class="form-control" ng-model="vm.cliente.data_nascimento | date:'dd/MM/yyyy'">
 								</div>
 							</div>
 						</div>
@@ -172,7 +179,8 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-danger">Gravar</button>
+						<button type="submit" ng-if="!vm.editar" ng-disabled="ngDisabled" class="btn btn-danger">Gravar</button>
+						<button type="submit" ng-if="vm.editar" ng-disabled="ngDisabled" class="btn btn-danger">Alterar</button>
 						<button class="btn btn-default" ui-sref="clientes">Voltar</button>
 						<div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div>
 					</form>

@@ -2,11 +2,13 @@ package com.clinica.thais.araujo.entidade;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,50 +21,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Bioimpedancia {
+public class Anamnese {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Double peso;
-	
-	private Double altura;
-	
-	private Double imc;
-	
-	private Double gordura;
-	
-	private Double peso_corporal;
-	
-	private Double musculo_esqueletico;
-	
-	private Integer gordura_visceral;
-	
-	private Double idade_corporal;
-	
-	private Double medidas_tronco;
-	
-	private Double medidas_membro;
-	
-	private Double agua_corporal;
-	
-	private Double massa_ossea;
-	
-	private Double metabolismo_basal;
-	
-	private Double medita_1;
-	
-	private Double medita_2;
-	
-	private Double medita_3;
+	@Lob
+	@Column(name = "anamnese")
+	private String anamnese;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
-	private Cliente id_cliente;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date data_avaliacao;
+	private Cliente cliente;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_cadastro;

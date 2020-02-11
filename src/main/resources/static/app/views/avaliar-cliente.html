@@ -1,0 +1,539 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class=" col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Paciente</div>
+			<div class="panel-body">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="">Foto:</label> <br /> <img
+									data-ng-src="data:image/png;base64,{{vm.cliente.image}}"
+									height="150" width="120" />
+							</div>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-4"></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label>Nome:</label> <span class="form-control"
+									ng-bind="vm.cliente.nome"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>CPF:</label> <span class="form-control"
+									ng-bind="vm.cliente.cpf"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label>E-mail:</label> <span class="form-control"
+									ng-bind="vm.cliente.email"></span>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<label>Telefone:</label> <span class="form-control"
+									ng-bind="vm.cliente.telefone"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class=" col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Avalição do Paciente</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div>
+									<ul class="nav nav-tabs" role="tablist">
+										<li class="active"><a data-target="#page_1" role="tab" ng-click="vm.clearMessage()" data-toggle="tab">Questionário</a></li>
+										<li><a data-target="#page_2" role="tab" ng-click="vm.clearMessage()" data-toggle="tab">Bioimpedância</a></li>
+										<li><a data-target="#page_3" role="tab" ng-click="vm.clearMessage()" data-toggle="tab">Plano terapêutico</a></li>
+										<li><a data-target="#page_4" role="tab" ng-click="vm.clearMessage()" data-toggle="tab">Anamnese</a></li>
+									</ul>
+									<br />
+
+									<div class="tab-content">
+										<!-- ######################### page 1 ######################### -->
+										<div class="tab-pane active" id="page_1">
+											<div class="col-md-12">
+												<form ng-submit="vm.submit_questionario()" name="cadastrar_questionario" novalidate>
+													<div class="row">
+														<div class="col-xs-2">
+															<div class="form-group" ng-init="vm.questionario.doenca_cronica='false'"
+																ng-class="{ 'has-error': cadastrar_questionario.doenca_cronica.$invalid && cadastrar_questionario.doenca_cronica.$dirty }">
+																<label for="doenca_cronica">Doenças crônicas:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="doenca_cronica_sim" id="doenca_cronica_sim" value="true" ng-model="vm.questionario.doenca_cronica"> Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio" name="doenca_cronica_nao" id="doenca_cronica_nao" value="false" checked="checked" ng-model="vm.questionario.doenca_cronica"> Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-10">
+															<div class="form-group">
+																<label for="desc_doenca">Descrição da doença:</label>
+																<textarea type="text" class="form-control" rows="2" ng-disabled="vm.questionario.doenca_cronica === 'false'"
+																	ng-model="vm.questionario.desc_doenca" id="desc_doenca"
+																	name="desc_doenca"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-2">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_questionario.evac_regular.$invalid && cadastrar_questionario.evac_regular.$dirty }">
+																<label for="evac_regular">Evacua regularmente:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="evac_regular_sim" id="evac_regular_sim"
+																		value="true" checked
+																		ng-model="vm.questionario.evac_regular"> Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="evac_regular_nao" id="evac_regular_nao"
+																		value="false" ng-model="vm.questionario.evac_regular">
+																		Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-3">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_questionario.hist_famil.$invalid && cadastrar_questionario.hist_famil.$dirty }">
+																<label for="hist_famil">Histórico familiar
+																	positivo:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="hist_famil_sim" id="hist_famil_sim" value="true"
+																		checked ng-model="vm.questionario.hist_famil"> Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="hist_famil_nao" id="hist_famil_nao"
+																		value="false" ng-model="vm.questionario.hist_famil">
+																		Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-3">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_questionario.tipo_pele.$invalid && cadastrar_questionario.tipo_pele.$dirty }">
+																<label for="tipo_pele">Tipo de pele:</label> <br />
+																<div class="checkbox" ng-model="vm.questionario.tipo_pele">
+																	<label class="checkbox-inline"> <input
+																		type="checkbox" id="inlineCheckbox1" value="seca">
+																		Seca
+																	</label> <label class="checkbox-inline"> <input
+																		type="checkbox" id="inlineCheckbox2" value="mista">
+																		Mista
+																	</label> <label class="checkbox-inline"> <input
+																		type="checkbox" id="inlineCheckbox3" value="oleosa">
+																		Oleosa
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_questionario.liq_diaria.$invalid && cadastrar_questionario.liq_diaria.$dirty }">
+																<label for="liq_diaria">Ingestão de líquido
+																	diária:</label> <input type="text" required
+																	class="form-control" ng-model="vm.questionario.liq_diaria"
+																	id="liq_diaria" name="liq_diaria">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-2">
+															<div class="form-group" ng-init="vm.questionario.exa_recente='false'"
+																ng-class="{ 'has-error': cadastrar_questionario.exa_recente.$invalid && cadastrar_questionario.exa_recente.$dirty }">
+																<label for="exa_recente">Exames recentes:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="exa_recente_sim" id="exa_recente_sim"
+																		value="true" checked ng-model="vm.questionario.exa_recente">
+																		Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="exa_recente_nao" id="
+																		exa_recente_nao" value="false"
+																		ng-model="vm.questionario.exa_recente"> Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-10">
+															<div class="form-group">
+																<label for="desc_exame">Descrição exame:</label>
+																<textarea type="text" class="form-control" rows="2" ng-disabled="vm.questionario.exa_recente === 'false'"
+																	ng-model="vm.questionario.desc_exame" id="desc_exame"
+																	name="desc_exame"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-3">
+															<div class="form-group" ng-init="vm.questionario.aler_medic='false'"
+																ng-class="{ 'has-error': cadastrar_questionario.aler_medic.$invalid && cadastrar_questionario.aler_medic.$dirty }">
+																<label for="aler_medic">Alergia de algum
+																	medicamento:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="aler_medic_sim" id="aler_medic_sim" value="true"
+																		checked ng-model="vm.questionario.aler_medic"> Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="aler_medic_nao" id="aler_medic_nao"
+																		value="false" ng-model="vm.questionario.aler_medic">
+																		Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-9">
+															<div class="form-group">
+																<label for="desc_exame">Descrição da alergia:</label>
+																<textarea type="text" class="form-control" rows="2" ng-disabled="vm.questionario.aler_medic === 'false'"
+																	ng-model="vm.questionario.desc_alerg" id="desc_alerg"
+																	name="desc_alerg"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-3">
+															<div class="form-group" ng-init="vm.questionario.uso_medicamento='false'"
+																ng-class="{ 'has-error': cadastrar_questionario.uso_medicamento.$invalid && cadastrar_questionario.uso_medicamento.$dirty }">
+																<label for="uso_medicamento">Uso constante de
+																	medicamento:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="uso_medicamento_sim" id="uso_medicamento_sim"
+																		value="true" checked
+																		ng-model="vm.questionario.uso_medicamento"> Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="uso_medicamento_nao" id="uso_medicamento_nao"
+																		value="false" ng-model="vm.questionario.uso_medicamento">
+																		Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-9">
+															<div class="form-group">
+																<label for="desc_uso_medicamento">Descrição do
+																	medicamento:</label>
+																<textarea type="text" class="form-control" rows="2" ng-disabled="vm.questionario.uso_medicamento === 'false'"
+																	ng-model="vm.questionario.desc_uso_medicamento"
+																	id="desc_uso_medicamento" name="desc_uso_medicamento"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-3">
+															<div class="form-group" ng-init="vm.questionario.ativ_fisica='false'"
+																ng-class="{ 'has-error': cadastrar_questionario.ativ_fisica.$invalid && cadastrar_questionario.ativ_fisica.$dirty }">
+																<label for="ativ_fisica">Pratica atividade
+																	física:</label>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="ativ_fisica_sim" id="ativ_fisica_sim"
+																		value="true" checked ng-model="vm.questionario.ativ_fisica">
+																		Sim
+																	</label>
+																</div>
+																<div class="radio">
+																	<label> <input type="radio"
+																		name="ativ_fisica_nao" id="ativ_fisica_nao"
+																		value="false" ng-model="vm.questionario.ativ_fisica">
+																		Não
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-9">
+															<div class="form-group">
+																<label for="desc_ativ_fisica">Descrição da
+																	atividade:</label>
+																<textarea type="text" class="form-control" rows="2" ng-disabled="vm.questionario.ativ_fisica === 'false'"
+																	ng-model="vm.questionario.desc_ativ_fisica"
+																	id="desc_ativ_fisica" name="desc_ativ_fisica"></textarea>
+															</div>
+														</div>
+													</div>
+													<button type="submit" class="btn btn-danger">Cadastrar</button>
+													<button class="btn btn-default" ui-sref="clientes">Voltar</button>
+													<div class="alert alert-info margin-top-5"
+														ng-show="vm.message">{{vm.message}}</div>
+												</form>
+											</div>
+										</div>
+
+										<!-- ######################### page 2 ######################### -->
+										<div class="tab-pane" id="page_2">
+											<div class="col-md-12">
+												<form ng-submit="vm.submit_bioimpedancia()"
+													name="cadastrar_bioimpedancia" novalidate>
+													<div class="row">
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.peso.$invalid && cadastrar_bioimpedancia.peso.$dirty }">
+																<label for="peso">Peso:</label> <input type="text"
+																	required class="form-control"
+																	ng-model="vm.bioimpedancia.peso" id="peso" name="peso">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.altura.$invalid && cadastrar_bioimpedancia.altura.$dirty }">
+																<label for="altura">Altura:</label> <input type="text"
+																	required class="form-control"
+																	ng-model="vm.bioimpedancia.altura" id="altura" name="altura">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.imc.$invalid && cadastrar_bioimpedancia.imc.$dirty }">
+																<label for="imc">IMC:</label> <input type="text"
+																	required class="form-control" ng-model="vm.bioimpedancia.imc"
+																	id="imc" name="imc">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.gordura.$invalid && cadastrar_bioimpedancia.gordura.$dirty }">
+																<label for="gordura">Gordura:</label> <input type="text"
+																	required class="form-control"
+																	ng-model="vm.bioimpedancia.gordura" id="gordura"
+																	name="gordura">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.peso_corporal.$invalid && cadastrar_bioimpedancia.peso_corporal.$dirty }">
+																<label for="peso_corporal">Peso Corporal:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.peso_corporal" id="peso_corporal"
+																	name="peso_corporal">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.musculo_esqueletico.$invalid && cadastrar_bioimpedancia.musculo_esqueletico.$dirty }">
+																<label for="musculo_esqueletico">Musculo
+																	Esqueletico:</label> <input type="text" required
+																	class="form-control"
+																	ng-model="vm.bioimpedancia.musculo_esqueletico"
+																	id="musculo_esqueletico" name="musculo_esqueletico">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.gordura_visceral.$invalid && cadastrar_bioimpedancia.gordura_visceral.$dirty }">
+																<label for="gordura_visceral">Gordura Visceral:</label>
+																<input type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.gordura_visceral"
+																	id="gordura_visceral" name="gordura_visceral">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.idade_corporal.$invalid && cadastrar_bioimpedancia.idade_corporal.$dirty }">
+																<label for="altura">Idade Corporal:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.idade_corporal"
+																	id="idade_corporal" name="idade_corporal">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.agua_corporal.$invalid && cadastrar_bioimpedancia.agua_corporal.$dirty }">
+																<label for="agua_corporal">Água Corporal:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.agua_corporal" id="agua_corporal"
+																	name="agua_corporal">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.massa_ossea.$invalid && cadastrar_bioimpedancia.massa_ossea.$dirty }">
+																<label for="massa_ossea">Mass Óssea:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.massa_ossea" id="massa_ossea"
+																	name="massa_ossea">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.medidas_tronco.$invalid && cadastrar_bioimpedancia.medidas_tronco.$dirty }">
+																<label for="medidas_tronco">Medida do Tronco:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.medidas_tronco"
+																	id="medidas_tronco" name="medidas_tronco">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.medidas_membro.$invalid && cadastrar_bioimpedancia.medidas_membro.$dirty }">
+																<label for="medidas_membro">Medida do Membro:</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.medidas_membro"
+																	id="medidas_membro" name="medidas_membro">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.circ_abdom_1.$invalid && cadastrar_bioimpedancia.circ_abdom_1.$dirty }">
+																<label for="circ_abdom_1">Circunferência
+																	abdominal:</label> <input type="text" required
+																	class="form-control" ng-model="vm.bioimpedancia.circ_abdom_1"
+																	id="circ_abdom_1" name="circ_abdom_1">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.circ_abdom_2.$invalid && cadastrar_bioimpedancia.circ_abdom_2.$dirty }">
+																<label for="circ_abdom_2">&nbsp;</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.circ_abdom_2" id="circ_abdom_2"
+																	name="circ_abdom_2">
+															</div>
+														</div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.circ_abdom_3.$invalid && cadastrar_bioimpedancia.circ_abdom_3.$dirty }">
+																<label for="circ_abdom_3">&nbsp;</label> <input
+																	type="text" required class="form-control"
+																	ng-model="vm.bioimpedancia.circ_abdom_3" id="circ_abdom_3"
+																	name="circ_abdom_3">
+															</div>
+														</div>
+													</div>
+
+													<button type="submit" class="btn btn-danger">Cadastrar</button>
+													<button class="btn btn-default" ui-sref="clientes">Voltar</button>
+													<div class="alert alert-info margin-top-5"
+														ng-show="vm.message">{{vm.message}}</div>
+												</form>
+											</div>
+										</div>
+
+										<!-- ######################### page 3 ######################### -->
+										<div class="tab-pane" id="page_3">
+											<div class="col-md-12">
+												<form ng-submit="vm.submit_plano_terapeutico()" name="cadastrar_planto_terapeutico" novalidate>
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_planto_terapeutico.objetivo.$invalid && cadastrar_planto_terapeutico.objetivo.$dirty }">
+																<label for="anamnese">Objetivo:</label>
+																<textarea type="text" class="form-control" rows="5"
+																	ng-model="vm.planto_terapeutico.objetivo" id="objetivo"
+																	name="objetivo"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_planto_terapeutico.queixa.$invalid && cadastrar_planto_terapeutico.queixa.$dirty }">
+																<label for="queixa">Queixa:</label>
+																<textarea type="text" class="form-control" rows="5"
+																	ng-model="vm.planto_terapeutico.queixa" id="queixa" name="queixa"></textarea>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_planto_terapeutico.pa.$invalid && cadastrar_planto_terapeutico.pa.$dirty }">
+																<label for="pa">P.A:</label> <input type="text" required
+																	class="form-control" ng-model="vm.planto_terapeutico.pa" id="pa"
+																	name="pa">
+															</div>
+														</div>
+														<div class="col-xs-6">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_planto_terapeutico.glicemia.$invalid && cadastrar_planto_terapeutico.glicemia.$dirty }">
+																<label for="cpf">Glicemia:</label> <input type="text"
+																	required class="form-control"
+																	ng-model="vm.planto_terapeutico.glicemia" id="glicemia"
+																	name="glicemia">
+															</div>
+														</div>
+													</div>
+													<button type="submit" class="btn btn-danger">Cadastrar</button>
+													<button class="btn btn-default" ui-sref="clientes">Voltar</button>
+													<div class="alert alert-info margin-top-5"
+														ng-show="vm.message">{{vm.message}}</div>
+												</form>
+											</div>
+										</div>
+
+										<!-- ######################### page 4 ######################### -->
+										<div class="tab-pane" id="page_4">
+											<div class="col-md-12">
+												<form ng-submit="vm.submit_anamnese()" name="cadastrar_anamnese" novalidate>
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_anamnese.anamnese.$invalid && cadastrar_anamnese.anamnese.$dirty }">
+																<label for="anamnese">Anamnese:</label>
+																<textarea type="text" class="form-control" rows="20"
+																	ng-model="vm.anamnese.anamnese" id="anamnese"
+																	name="anamnese"></textarea>
+															</div>
+														</div>
+													</div>
+													<button type="submit" class="btn btn-danger">Cadastrar</button>
+													<button class="btn btn-default" ui-sref="clientes">Voltar</button>
+													<div class="alert alert-info margin-top-5"
+														ng-show="vm.message">{{vm.message}}</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

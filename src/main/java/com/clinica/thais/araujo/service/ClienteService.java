@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clinica.thais.araujo.entidade.Cliente;
+import com.clinica.thais.araujo.entidade.Status;
 import com.clinica.thais.araujo.repository.ClienteRepository;
 
 @Service("clienteService")
@@ -24,7 +25,7 @@ public class ClienteService {
 
 	public Cliente save(Cliente cliente) {
 		cliente.setData_cadastro(new Date());
-		cliente.setData_nascimento(new Date());
+		cliente.setStatus(Status.ATIVO);
 		return repository.save(cliente);
 	}
 
@@ -32,4 +33,8 @@ public class ClienteService {
 		return repository.findAll();
 	}
 
+
+	public Cliente findOne(Long id) {
+		return repository.findOne(id);
+	}
 }

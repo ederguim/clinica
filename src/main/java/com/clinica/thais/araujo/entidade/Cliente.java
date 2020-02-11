@@ -1,14 +1,11 @@
 package com.clinica.thais.araujo.entidade;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,11 +42,12 @@ public class Cliente {
 	
 	@Lob
 	@Column(name = "image")
-	private byte[] image;
+	private String image;
 	
 	@Column(name = "cpf")
 	private Long cpf;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_nascimento;
 	
@@ -62,79 +62,16 @@ public class Cliente {
 	
 	@Column(name = "telefone")
 	private String telefone;
-
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_cadastro;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@Enumerated
+	@Column(name = "status")
+	private Status status;
+	
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
-	
-	@ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "bio_cliente", joinColumns = @JoinColumn(name = "id_cliente"))
-	private List<Bioimpedancia> bioimpedancia;
-
-//	@Type(type="true_false")
-//	@Column(name = "doenca_cronica")
-//	private Boolean doenca_cronica;
-//
-//	@Column(name = "desc_doenca")
-//	private String desc_doenca;
-//
-//	@Type(type="true_false")
-//	@Column(name = "evac_regular")
-//	private Boolean evac_regular;
-//
-//	@Type(type="true_false")
-//	@Column(name = "hist_famil")
-//	private Boolean hist_famil;
-//
-//	@Column(name = "tipo_pele")
-//	private String tipo_pele;
-//
-//	@Column(name = "liq_diaria")
-//	private String liq_diaria;
-//
-//	@Type(type="true_false")
-//	@Column(name = "exa_recente")
-//	private Boolean exa_recente;
-//
-//	@Column(name = "desc_exame")
-//	private String desc_exame;
-//
-//	@Type(type="true_false")
-//	@Column(name = "aler_medic")
-//	private Boolean aler_medic;
-//
-//	@Column(name = "desc_alerg")
-//	private String desc_alerg;
-//
-//	@Type(type="true_false")
-//	@Column(name = "uso_medicamento")
-//	private Boolean uso_medicamento;
-//
-//	@Column(name = "desc_uso_medicamento")
-//	private String desc_uso_medicamento;
-//	
-//	@Type(type="true_false")
-//	@Column(name = "ativ_fisica")
-//	private Boolean ativ_fisica;
-//
-//	@Column(name = "desc_ativ_fisica")
-//	private String desc_ativ_fisica;
-//
-//	@Column(name = "objetivo")
-//	private String objetivo;
-//	
-//	@Column(name = "queixa")
-//	private String queixa;
-//	
-//	@Column(name = "pa")
-//	private String pa;
-//	
-//	@Column(name = "glicemia")
-//	private String glicemia;
-//	
-//	@Column(name = "anamnese")
-//	private String anamnese;
 }
