@@ -30,4 +30,8 @@ public class AnamneseService {
 	public Anamnese findOne(Long id) {
 		return repository.findOne(id);
 	}
+
+	public List<Anamnese> findByClienteId(Long cliente_id) {
+		return repository.findByClienteId(cliente_id);
+	}
 }

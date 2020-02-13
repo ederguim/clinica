@@ -1,6 +1,5 @@
 package com.clinica.thais.araujo.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +16,19 @@ public class BioimpedanciaService {
 	@Autowired
 	private BioimpedanciaRepository repository;
 	
-	public Bioimpedancia save(Bioimpedancia bioimpedancia) {
-		bioimpedancia.setData_cadastro(new Date());
-		bioimpedancia.setData_avaliacao(new Date());
-		return repository.save(bioimpedancia);
-	}
-
 	public List<Bioimpedancia> findAll() {
 		return repository.findAll();
 	}
-
+	
+	public Bioimpedancia createBioimpedancia(Bioimpedancia bioimpedancia) {
+		return repository.saveAndFlush(bioimpedancia);
+	}
 
 	public Bioimpedancia findOne(Long id) {
 		return repository.findOne(id);
 	}
 
-	public List<Bioimpedancia> findByBioimpedancia_ClienteId(Long clienteId) {
-		return repository.findByBioimpedancia_ClienteId(clienteId);
+	public List<Bioimpedancia> findByClienteId(Long id) {
+		return repository.findByClienteId(id);
 	}
 }

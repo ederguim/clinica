@@ -1,6 +1,5 @@
 package com.clinica.thais.araujo.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class PlanoTerapeuticoService {
 	private PlanoTerapeuticoRepository repository;
 	
 	public PlanoTerapeutico save(PlanoTerapeutico planoTerapeutico) {
-		planoTerapeutico.setData_cadastro(new Date());
 		return repository.save(planoTerapeutico);
 	}
 
@@ -29,5 +27,9 @@ public class PlanoTerapeuticoService {
 
 	public PlanoTerapeutico findOne(Long id) {
 		return repository.findOne(id);
+	}
+
+	public List<PlanoTerapeutico> findByClienteId(Long cliente_id) {
+		return repository.findByClienteId(cliente_id);
 	}
 }

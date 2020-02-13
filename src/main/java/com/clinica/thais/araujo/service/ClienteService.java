@@ -22,7 +22,6 @@ public class ClienteService {
 		return repository.findOneByUsername(nome);
 	}
 	
-
 	public Cliente save(Cliente cliente) {
 		cliente.setData_cadastro(new Date());
 		cliente.setStatus(Status.ATIVO);
@@ -32,7 +31,6 @@ public class ClienteService {
 	public List<Cliente> findAll() {
 		return repository.findAll();
 	}
-
 
 	public Cliente findOne(Long id) {
 		return repository.findOne(id);

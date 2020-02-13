@@ -71,6 +71,19 @@
 											<div class="col-md-12">
 												<form ng-submit="vm.submit_questionario()" name="cadastrar_questionario" novalidate>
 													<div class="row">
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.data_avaliacao.$invalid && cadastrar_bioimpedancia.data_avaliacao.$dirty }">
+																<label for="data_avaliacao">Data Avaliação:</label> <input
+																	type="date" required class="form-control"
+																	ng-model="vm.questionario.data_avaliacao" id="data_avaliacao"
+																	name="data_avaliacao">
+															</div>
+														</div>
+													</div>
+													<div class="row">
 														<div class="col-xs-2">
 															<div class="form-group" ng-init="vm.questionario.doenca_cronica='false'"
 																ng-class="{ 'has-error': cadastrar_questionario.doenca_cronica.$invalid && cadastrar_questionario.doenca_cronica.$dirty }">
@@ -96,7 +109,7 @@
 														</div>
 													</div>
 													<div class="row">
-														<div class="col-xs-2">
+														<div class="col-xs-3">
 															<div class="form-group"
 																ng-class="{ 'has-error': cadastrar_questionario.evac_regular.$invalid && cadastrar_questionario.evac_regular.$dirty }">
 																<label for="evac_regular">Evacua regularmente:</label>
@@ -154,7 +167,7 @@
 																</div>
 															</div>
 														</div>
-														<div class="col-xs-4">
+														<div class="col-xs-3">
 															<div class="form-group"
 																ng-class="{ 'has-error': cadastrar_questionario.liq_diaria.$invalid && cadastrar_questionario.liq_diaria.$dirty }">
 																<label for="liq_diaria">Ingestão de líquido
@@ -301,6 +314,21 @@
 											<div class="col-md-12">
 												<form ng-submit="vm.submit_bioimpedancia()"
 													name="cadastrar_bioimpedancia" novalidate>
+													
+													<div class="row">
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_bioimpedancia.data_avaliacao.$invalid && cadastrar_bioimpedancia.data_avaliacao.$dirty }">
+																<label for="data_avaliacao">Data Avaliação:</label> <input
+																	type="date" required class="form-control"
+																	ng-model="vm.bioimpedancia.data_avaliacao" id="data_avaliacao"
+																	name="data_avaliacao">
+															</div>
+														</div>
+													</div>
+													
 													<div class="row">
 														<div class="col-xs-4">
 															<div class="form-group"
@@ -458,6 +486,19 @@
 											<div class="col-md-12">
 												<form ng-submit="vm.submit_plano_terapeutico()" name="cadastrar_planto_terapeutico" novalidate>
 													<div class="row">
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_planto_terapeutico.data_avaliacao.$invalid && cadastrar_planto_terapeutico.data_avaliacao.$dirty }">
+																<label for="data_avaliacao">Data Avaliação:</label> <input
+																	type="date" required class="form-control"
+																	ng-model="vm.planto_terapeutico.data_avaliacao" id="data_avaliacao"
+																	name="data_avaliacao">
+															</div>
+														</div>
+													</div>
+													<div class="row">
 														<div class="col-xs-12">
 															<div class="form-group"
 																ng-class="{ 'has-error': cadastrar_planto_terapeutico.objetivo.$invalid && cadastrar_planto_terapeutico.objetivo.$dirty }">
@@ -509,6 +550,19 @@
 										<div class="tab-pane" id="page_4">
 											<div class="col-md-12">
 												<form ng-submit="vm.submit_anamnese()" name="cadastrar_anamnese" novalidate>
+													<div class="row">
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4"></div>
+														<div class="col-xs-4">
+															<div class="form-group"
+																ng-class="{ 'has-error': cadastrar_anamnese.data_avaliacao.$invalid && cadastrar_anamnese.data_avaliacao.$dirty }">
+																<label for="data_avaliacao">Data Avaliação:</label> <input
+																	type="date" required class="form-control"
+																	ng-model="vm.anamnese.data_avaliacao" id="data_avaliacao"
+																	name="data_avaliacao">
+															</div>
+														</div>
+													</div>
 													<div class="row">
 														<div class="col-xs-12">
 															<div class="form-group"

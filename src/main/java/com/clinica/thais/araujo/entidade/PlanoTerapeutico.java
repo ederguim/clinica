@@ -42,8 +42,11 @@ public class PlanoTerapeutico {
 	private String glicemia;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_cliente")
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data_avaliacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_cadastro;

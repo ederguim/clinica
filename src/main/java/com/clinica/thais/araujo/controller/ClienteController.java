@@ -73,9 +73,24 @@ public class ClienteController {
 		}
 	}
 	
+	@RequestMapping(value = "/questionario-by-id-cliente/{id}", method = RequestMethod.GET)
+	public List<Questionario> findByQuestionario_ClienteId(@PathVariable Long id) {
+			return questionarioService.findByClienteId(id);
+	}
+	
 	@RequestMapping(value = "/bioimpedancia-by-id-cliente/{id}", method = RequestMethod.GET)
 	public List<Bioimpedancia> findByBioimpedancia_ClienteId(@PathVariable Long id) {
-			return bioimpedanciaService.findByBioimpedancia_ClienteId(id);
+			return bioimpedanciaService.findByClienteId(id);
+	}
+	
+	@RequestMapping(value = "/planto-terapeutico-by-id-cliente/{id}", method = RequestMethod.GET)
+	public List<PlanoTerapeutico> findByPlanto_Terapeutico_ClienteId(@PathVariable Long id) {
+			return planoTerapeuticoService.findByClienteId(id);
+	}
+	
+	@RequestMapping(value = "/anamnese-by-id-cliente/{id}", method = RequestMethod.GET)
+	public List<Anamnese> findByAnamnese_ClienteId(@PathVariable Long id) {
+			return anamneseService.findByClienteId(id);
 	}
 
 	@RequestMapping(value = "/cadastrar_questionario", method = RequestMethod.POST)
@@ -85,7 +100,7 @@ public class ClienteController {
 	
 	@RequestMapping(value = "/cadastrar_bioimpedancia", method = RequestMethod.POST)
 	public ResponseEntity<Bioimpedancia> createBioimpedancia(@RequestBody Bioimpedancia bioimpedancia) {
-		return new ResponseEntity<Bioimpedancia>(bioimpedanciaService.save(bioimpedancia), HttpStatus.CREATED);
+		return new ResponseEntity<Bioimpedancia>(bioimpedanciaService.createBioimpedancia(bioimpedancia), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/cadastrar_planto_terapeutico", method = RequestMethod.POST)

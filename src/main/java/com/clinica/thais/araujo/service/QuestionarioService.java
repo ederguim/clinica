@@ -1,6 +1,5 @@
 package com.clinica.thais.araujo.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class QuestionarioService {
 	private QuestionarioRepository repository;
 	
 	public Questionario save(Questionario questionario) {
-		questionario.setData_cadastro(new Date());
 		return repository.save(questionario);
 	}
 
@@ -29,5 +27,9 @@ public class QuestionarioService {
 
 	public Questionario findOne(Long id) {
 		return repository.findOne(id);
+	}
+
+	public List<Questionario> findByClienteId(Long cliente_id) {
+		return repository.findByClienteId(cliente_id);
 	}
 }

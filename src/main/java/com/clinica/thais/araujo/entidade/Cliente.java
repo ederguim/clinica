@@ -36,42 +36,43 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "cliente_sequence")
 	@SequenceGenerator(name = "cliente_sequence", sequenceName = "CLIENTE_SEQ")
 	private Long id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Lob
 	@Column(name = "image")
 	private String image;
-	
+
 	@Column(name = "cpf")
 	private Long cpf;
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_nascimento;
-	
+
 	@Column(name = "estado_civil")
 	private String estado_civil;
-	
+
 	@Column(name = "profissao")
 	private String profissao;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "telefone")
 	private String telefone;
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_cadastro;
-	
+
 	@Enumerated
 	@Column(name = "status")
 	private Status status;
-	
-	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
-	@JoinColumn(name = "id_endereco")
+
+	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST })
+	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
+
 }

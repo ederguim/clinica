@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,10 +20,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
+@SequenceGenerator(name = "bioimpedancia_seq", sequenceName = "bioimpedancia_seq", initialValue = 1, allocationSize = 1)
 public class Bioimpedancia {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bioimpedancia_seq")
 	private Long id;
 	
 	private Double peso;
@@ -51,15 +53,15 @@ public class Bioimpedancia {
 	
 	private Double metabolismo_basal;
 	
-	private Double medita_1;
+	private Double circ_abdom_1;
 	
-	private Double medita_2;
+	private Double circ_abdom_2;
 	
-	private Double medita_3;
+	private Double circ_abdom_3;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_cliente")
-	private Cliente id_cliente;
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_avaliacao;
