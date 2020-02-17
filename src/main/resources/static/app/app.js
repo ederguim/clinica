@@ -1,5 +1,14 @@
-angular.module('App', ['ui.router', 'LocalStorageModule', 'ngFileUpload'])
-    .run(function (AuthService, $rootScope, $state, LocalStorage, $http) {
+angular.module('App', [ 'ui.router', //
+						'LocalStorageModule', //
+						'ngFileUpload', //
+						'ngMessages', //
+						'ngAnimate', //
+						'toastr' //
+						])
+    
+
+
+	.run(function (AuthService, $rootScope, $state, LocalStorage, $http) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         	
         	if (LocalStorage.get('token') != undefined) {

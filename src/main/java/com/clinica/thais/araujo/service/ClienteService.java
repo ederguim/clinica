@@ -35,4 +35,8 @@ public class ClienteService {
 	public Cliente findOne(Long id) {
 		return repository.findOne(id);
 	}
+
+	public Cliente findOneByCpf(Long cpf) {
+		return repository.findOneByCpf(cpf);
+	}
 }

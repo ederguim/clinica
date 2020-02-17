@@ -94,7 +94,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>sbtp</finalName>
+		<finalName>thais-araujo</finalName>
 	</build>
 
 

@@ -14,3 +14,7 @@
     border: 1px solid #ddd;
     border-bottom-color: transparent;
 }
+
+[ng-cloak]  {  
+	display: none !important;
+}

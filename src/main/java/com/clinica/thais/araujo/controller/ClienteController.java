@@ -42,17 +42,18 @@ public class ClienteController {
 
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
 	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
-		if (clienteService.findOneByUsername(cliente.getNome()) != null) {
-			throw new RuntimeException("Cliente já cadastrado!");
+		Cliente _cliente = clienteService.findOneByCpf(cliente.getCpf());
+		if (_cliente != null && (cliente.getCpf().equals(_cliente.getCpf()))) {
+			throw new RuntimeException("Paciente já cadastrado");
 		}
 		return new ResponseEntity<Cliente>(clienteService.save(cliente), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/alterar", method = RequestMethod.PUT)
 	public Cliente updateCliente(@RequestBody Cliente cliente) {
-		Cliente cliente_ = clienteService.findOneByUsername(cliente.getNome());
-		if (cliente_ != null && cliente_.getId() != cliente.getId()) {
-			throw new RuntimeException("Cliente já cadastrado");
+		Cliente _cliente = clienteService.findOneByCpf(cliente.getCpf());
+		if (_cliente != null && _cliente.getId() != _cliente.getId()) {
+			throw new RuntimeException("Paciente já cadastrado");
 		}
 		return clienteService.save(cliente);
 

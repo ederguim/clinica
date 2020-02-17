@@ -1,8 +1,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta
+	http-equiv="X-UA-Compatible"
+	content="IE=edge">
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div class=" col-md-12">
@@ -10,96 +14,158 @@
 			<div class="panel-heading">Paciente</div>
 			<div class="panel-body">
 				<div class="col-md-12">
-					<form name="cadastrar" ng-submit="vm.submit()" novalidate>
-
+					<form
+						name="vm.cadastrar"
+						ng-submit="vm.submit()"
+						novalidate>
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label for="">Foto:</label>
-									<div class="upload" ngf-drop="vm.imageUpload($file)" ngf-select="vm.imageUpload($file)"
-											ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
-											accept="image/*" ngf-pattern="'image/*'" ng-model="vm.image"><label color="red">Clique aqui para adicionar imagem</label>
-											<br/>
-											<img ng-show="form.file.$valid" class="thumb select-zone" ngf-thumbnail="vm.image" height="100" width="100">
-<!-- 											<input type="hidden" ng-model="vm.cliente.image"> -->
+									<label for="">Foto:</label>
+									<div
+										class="upload"
+										ngf-drop="vm.imageUpload($file)"
+										ngf-select="vm.imageUpload($file)"
+										ngf-drag-over-class="'dragover'"
+										ngf-multiple="false"
+										ngf-allow-dir="false"
+										accept="image/*"
+										ngf-pattern="'image/*'"
+										ng-model="vm.image">
+										<label color="red">Clique aqui para adicionar imagem</label> <br /> <img
+											ng-show="form.file.$valid"
+											class="thumb select-zone"
+											ngf-thumbnail="vm.image"
+											height="100"
+											width="100">
+										<!-- 											<input type="hidden" ng-model="vm.cliente.image"> -->
 									</div>
 								</div>
 							</div>
 							<div class="col-md-2"></div>
 							<div class="col-md-6"></div>
 						</div>
-
 						<div class="row">
 							<div class="col-md-6">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.nome.$invalid && cadastrar.nome.$dirty }">
-									<label for="nome">Nome:</label> <input type="text" required
-										class="form-control" ng-model="vm.cliente.nome" id="nome"
+								<div
+									class="form-group"
+									ng-class="{ 'has-error': cadastrar.nome.$invalid && cadastrar.nome.$touched }">
+									<label><font color="red">*</font></label><label for="nome">Nome:</label> <input
+										type="text"
+										required
+										class="form-control"
+										ng-model="vm.cliente.nome"
+										id="nome"
 										name="nome">
+									<div
+										ng-messages="cadastrar.nome.$error"
+										ng-if="cadastrar.nome.$invalid && cadastrar.nome.$touched">
+										<div ng-messages-include="app/templates/messages.html"></div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-3">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.cpf.$invalid && cadastrar.cpf.$dirty }">
-									<label for="cpf">CPF:</label> <input type="number" required
-										class="form-control" ng-model="vm.cliente.cpf" id="cpf"
+								<div
+									class="form-group"
+									ng-class="{ 'has-error': cadastrar.cpf.$invalid && cadastrar.cpf.$touched }">
+									<label><font color="red">*</font></label><label for="cpf">CPF:</label> <input
+										type="number"
+										required
+										class="form-control"
+										ng-model="vm.cliente.cpf"
+										id="cpf"
 										name="cpf">
+									<div
+										ng-messages="cadastrar.cpf.$error"
+										ng-if="cadastrar.cpf.$invalid && cadastrar.cpf.$touched">
+										<div ng-messages-include="app/templates/messages.html"></div>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-3" ng-if="!vm.editar">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.data_nascimento.$invalid && cadastrar.data_nascimento.$dirty }">
-									<label for="data_nascimento">Data Nascimento:</label> <input
-										type="date" required class="form-control"
-										ng-model="vm.cliente.data_nascimento" id="data_nascimento"
+							<div
+								class="col-md-3"
+								ng-if="!vm.editar">
+								<div
+									class="form-group"
+									ng-class="{ 'has-error': cadastrar.data_nascimento.$invalid && cadastrar.data_nascimento.$touched }">
+									<label><font color="red">*</font></label><label for="cpf">Data Nascimento:</label> <input
+										type="date"
+										required
+										class="form-control"
+										ng-model="vm.cliente.data_nascimento"
+										id="data_nascimento"
 										name="data_nascimento">
+									<div
+										ng-messages="cadastrar.data_nascimento.$error"
+										ng-if="cadastrar.data_nascimento.$invalid && cadastrar.data_nascimento.$touched">
+										<div ng-messages-include="app/templates/messages.html"></div>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-3" ng-if="vm.editar" ng-disabled="ngDisabled">
+							<div
+								class="col-md-3"
+								ng-if="vm.editar"
+								ng-disabled="ngDisabled">
 								<div class="form-group">
 									<label for="data_nascimento">Data Nascimento:</label> <input
-										type="text" class="form-control" ng-model="vm.cliente.data_nascimento | date:'dd/MM/yyyy'">
+										type="text"
+										class="form-control"
+										ng-model="vm.cliente.data_nascimento | date:'dd/MM/yyyy'">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-6">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.estado_civil.$invalid && cadastrar.estado_civil.$dirty }">
+								<div class="form-group">
 									<label for="etado_civil">Estado Civil:</label> <input
-										type="text" required class="form-control"
-										ng-model="vm.cliente.estado_civil" id="estado_civil"
+										type="text"
+										class="form-control"
+										ng-model="vm.cliente.estado_civil"
+										id="estado_civil"
 										name="estado_civil">
 								</div>
 							</div>
 							<div class="col-xs-6">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.profissao.$invalid && cadastrar.profissao.$dirty }">
-									<label for="profissao">Profissao:</label> <input type="text"
-										required class="form-control" ng-model="vm.cliente.profissao"
-										id="profissao" name="profissao">
+								<div class="form-group">
+									<label for="profissao">Profissao:</label> <input
+										type="text"
+										class="form-control"
+										ng-model="vm.cliente.profissao"
+										id="profissao"
+										name="profissao">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-8">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.email.$invalid && cadastrar.email.$dirty }">
-									<label for="email">E-mail:</label> <input type="text" required
-										class="form-control" ng-model="vm.cliente.email" id="email"
+								<div class="form-group">
+									<label for="email">E-mail:</label> <input
+										type="text"
+										class="form-control"
+										ng-model="vm.cliente.email"
+										id="email"
 										name="email">
 								</div>
 							</div>
 							<div class="col-xs-4">
-								<div class="form-group"
-									ng-class="{ 'has-error': cadastrar.telefone.$invalid && cadastrar.telefone.$dirty }">
-									<label for="telefone">Telefone:</label> <input type="text"
-										required class="form-control" ng-model="vm.cliente.telefone"
-										id="telefone" name="telefone">
+								<div
+									class="form-group"
+									ng-class="{ 'has-error': cadastrar.telefone.$invalid && cadastrar.telefone.$touched }">
+									<label><font color="red">*</font></label><label for="telefone">Telefone:</label> <input
+										type="text"
+										required
+										class="form-control"
+										ng-model="vm.cliente.telefone"
+										id="telefone"
+										name="telefone">
+									<div
+										ng-messages="cadastrar.telefone.$error"
+										ng-if="cadastrar.telefone.$invalid && cadastrar.telefone.$touched">
+										<div ng-messages-include="app/templates/messages.html"></div>
+									</div>
 								</div>
 							</div>
 						</div>
-
 						<div class="panel panel-default">
 							<div class="panel-heading">Endereço</div>
 							<div class="panel-body">
@@ -107,82 +173,155 @@
 									<div class="row">
 										<div class="col-md-9 col-md-push-3"></div>
 										<div class="col-md-3 col-md-pull-9">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.cep.$invalid && cadastrar.cep.$dirty }">
-												<label for="cep">CEP:</label> <input type="text" required
-													class="form-control" ng-model="vm.cliente.endereco.cep"
-													id="cep" name="cep">
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.cep.$invalid && cadastrar.cep.$touched }">
+												<label><font color="red">*</font></label><label for="cep">CEP:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.cep"
+													id="cep"
+													name="cep">
+												<div
+													ng-messages="cadastrar.cep.$error"
+													ng-if="cadastrar.cep.$invalid && cadastrar.cep.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-12">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.logradouro.$invalid && cadastrar.logradouro.$dirty }">
-												<label for="logradouro">Logradouro:</label> <input
-													type="text" required class="form-control"
-													ng-model="vm.cliente.endereco.logradouro" id="logradouro"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.logradouro.$invalid && cadastrar.logradouro.$touched }">
+												<label><font color="red">*</font></label><label for="telefone">Telefone:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.logradouro"
+													id="logradouro"
 													name="logradouro">
+												<div
+													ng-messages="cadastrar.logradouro.$error"
+													ng-if="cadastrar.logradouro.$invalid && cadastrar.logradouro.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.complemento.$invalid && cadastrar.complemento.$dirty }">
-												<label for="complemento">Complemento:</label> <input
-													type="text" required class="form-control"
-													ng-model="vm.cliente.endereco.complemento" id="complemento"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.complemento.$invalid && cadastrar.complemento.$touched }">
+												<label><font color="red">*</font></label><label for="complemento">Complemento:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.complemento"
+													id="complemento"
 													name="complemento">
+												<div
+													ng-messages="cadastrar.complemento.$error"
+													ng-if="cadastrar.complemento.$invalid && cadastrar.complemento.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 										<div class="col-md-3">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.numero.$invalid && cadastrar.numero.$dirty }">
-												<label for="numero">Número:</label> <input type="text"
-													required class="form-control"
-													ng-model="vm.cliente.endereco.numero" id="numero"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.numero.$invalid && cadastrar.numero.$touched }">
+												<label><font color="red">*</font></label><label for="numero">Número:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.numero"
+													id="numero"
 													name="numero">
+												<div
+													ng-messages="cadastrar.numero.$error"
+													ng-if="cadastrar.numero.$invalid && cadastrar.numero.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 										<div class="col-md-3">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.bairro_nascimento.$invalid && cadastrar.bairro.$dirty }">
-												<label for="bairro">Bairro:</label> <input type="text"
-													required class="form-control"
-													ng-model="vm.cliente.endereco.bairro" id="bairro"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.bairro.$invalid && cadastrar.bairro.$touched }">
+												<label><font color="red">*</font></label><label for="bairro">Bairro:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.bairro"
+													id="bairro"
 													name="bairro">
+												<div
+													ng-messages="cadastrar.bairro.$error"
+													ng-if="cadastrar.bairro.$invalid && cadastrar.bairro.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.municipio.$invalid && cadastrar.municipio.$dirty }">
-												<label for="municipio">Municipio:</label> <input type="text"
-													required class="form-control"
-													ng-model="vm.cliente.endereco.municipio" id="municipio"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.municipio.$invalid && cadastrar.municipio.$touched }">
+												<label><font color="red">*</font></label><label for="municipio">Município:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.municipio"
+													id="municipio"
 													name="municipio">
+												<div
+													ng-messages="cadastrar.municipio.$error"
+													ng-if="cadastrar.municipio.$invalid && cadastrar.municipio.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 										<div class="col-md-3">
-											<div class="form-group"
-												ng-class="{ 'has-error': cadastrar.estado.$invalid && cadastrar.estado.$dirty }">
-												<label for="estado">Estado:</label> <input type="text"
-													required class="form-control"
-													ng-model="vm.cliente.endereco.estado" id="estado"
+											<div
+												class="form-group"
+												ng-class="{ 'has-error': cadastrar.estado.$invalid && cadastrar.estado.$touched }">
+												<label><font color="red">*</font></label><label for="estado">Estado:</label> <input
+													type="text"
+													required
+													class="form-control"
+													ng-model="vm.cliente.endereco.estado"
+													id="estado"
 													name="estado">
+												<div
+													ng-messages="cadastrar.estado.$error"
+													ng-if="cadastrar.estado.$invalid && cadastrar.estado.$touched">
+													<div ng-messages-include="app/templates/messages.html"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
-						<button type="submit" ng-if="!vm.editar" ng-disabled="ngDisabled" class="btn btn-danger">Gravar</button>
-						<button type="submit" ng-if="vm.editar" ng-disabled="ngDisabled" class="btn btn-danger">Alterar</button>
-						<button class="btn btn-default" ui-sref="clientes">Voltar</button>
-						<div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div>
+						<button
+							type="submit"
+							ng-if="!vm.editar"
+							ng-disabled="ngDisabled"
+							class="btn btn-danger">Gravar</button>
+						<button
+							type="submit"
+							ng-if="vm.editar"
+							ng-disabled="ngDisabled"
+							class="btn btn-danger">Alterar</button>
+						<button
+							class="btn btn-default"
+							ui-sref="clientes">Voltar</button>
+						<!-- 						<div class="alert alert-info margin-top-5" ng-show="vm.message">{{vm.message}}</div> -->
 					</form>
 				</div>
 			</div>
